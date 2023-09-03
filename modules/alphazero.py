@@ -2,8 +2,9 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 import random
-
 from tqdm.notebook import trange
+
+from modules.mcts import MCTS, MCTSParallel
 
 
 class AlphaZero:
@@ -91,9 +92,9 @@ class AlphaZero:
                 self.train(memory)
 
             torch.save(self.model.state_dict(),
-                       f"model_{iteration}_{self.game}.pt")
+                       f"models/{self.game}/model_{iteration}.pt")
             torch.save(self.optimizer.state_dict(),
-                       f"optimizer_{iteration}_{self.game}.pt")
+                       f"models/{self.game}/optimizer_{iteration}.pt")
 
 
 class AlphaZeroParallel:
@@ -195,9 +196,9 @@ class AlphaZeroParallel:
                 self.train(memory)
 
             torch.save(self.model.state_dict(),
-                       f"model_{iteration}_{self.game}.pt")
+                       f"models/{self.game}/model_{iteration}.pt")
             torch.save(self.optimizer.state_dict(),
-                       f"optimizer_{iteration}_{self.game}.pt")
+                       f"models/{self.game}/optimizer_{iteration}.pt")
 
 
 class SPG:

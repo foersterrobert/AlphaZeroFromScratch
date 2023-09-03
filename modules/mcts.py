@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-from resnet import Node
+from modules.resnet import Node
 
 
 class MCTS:
